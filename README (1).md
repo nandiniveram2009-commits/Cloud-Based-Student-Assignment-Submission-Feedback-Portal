@@ -171,38 +171,74 @@ assignments/{course_id}/{assignment_id}/{student_id}-{timestamp}-{filename} prev
 ## Folder structure 
 
 Cloud-Hobby-Skills-Tracker/
-├── backend/
-│   ├── requirements.txt
-│   ├── app.py
-│   ├── cloud_db.py
-│   ├── database_models.py
-│   ├── auth_service.py
-│   ├── auth_routs.py
-│   └── assignment_routs.py
-│   └── submission_routs.py
-│   
-├── Frontend/   
-│   ├── package.json
-│   ├── src/app.jsx
-│   ├── src/services/api.js
-│   ├── scr/pages/login.jsx
-│   ├──src/pages/Register.jsx
-│   ├── src/pages/studentDashboad.jsx
-│   └── src/pages/TeacherDashboard.jsx
-│   
+student-assessment-portal                
+│
+├── backend/                
+│   ├── app.py                  
+│   ├── requirements.txt      
+│   ├── models/
+│   │   └── database_models.py  
+│   ├── services/
+│   │   ├── cloud_db.py        
+│   │   └── auth_services.py  
+│   └── route/
+│       ├── auth_routes.py      
+│       ├── assignment_routes.py
+│       └── submission_routes.py
+│
+│└── frontend/                
+│    ├── package.json          
+│    └── src/
+│        ├── app.jsx       
+│        ├── services/
+│        │    └── api.jsx       
+│        └── pages/
+│             ├── login.jsx                     
+│             ├── register.jsx
+│			``├──studentdashboad.jsx
+│             └──teacherdashboad.jsx
 ├── .env.example
-├── .gitignore
 └── README.md
 ## Installation 
 
 Ensure Python (3.10+), Node.js (18+), and Git are installed on your machine.
 
 ## Environment variable 
-
+DATABASE_URL=sqlite:///./portal.db
+SECRET_KEY=super-secret-jwt-key-123456
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+STORAGE_DIR=./uploads
 
 ## Local setup
+```bash
+# Enter the server tier directory
+cd backend
 
-## Running the application 
+# Create an isolated python workspace environment
+python -m venv venv
+
+# Activate your server workspace environment
+source venv/bin/activate  # On Windows terminals use: venv\Scripts\activate
+
+# Install the required server dependencies
+pip install -r requirements.txt
+
+
+## Running the application  
+
+### Step 1: Initialize the Python Server Instance
+In your first terminal workspace tab (where your `venv` sandbox is actively engaged), spin up the controller:
+```bash
+python app.py
+```
+*The local API pipeline servers will spin up immediately (typically tracking metrics locally at `http://localhost:5000`).*
+
+### Step 2: Boot Up the Vite UI Development Server
+In your secondary split terminal window, fire up the hot-reloading development preview compilation tool:
+```bash
+npm run dev
+
 ## Testing 
 
 Run Unit Tests: npm test or pytest
@@ -258,8 +294,6 @@ Successfully implemented a fully functional cloud education portal demonstrating
 
 * **GitHub:** [nandiniveram2009](https://github.com)
 * **LinkedIn:** [Nandini Verma](https://linkedin.com)
-
-
 
 ## Scalability 
 
